@@ -1,0 +1,79 @@
+:root {
+  --primary-green: #50a684;
+  --dark-green: #3c8f6f;
+  --text-dark: #2d2d2d;
+  --text-light: #555;
+  --background-light: #6db193;
+  --background-section: #6db193;
+  --border-light: #e4dfd7;
+  --border-section: #e8e2d9;
+  --code-bg-light: #6db193;
+  --code-text-dark: #2d6655;
+  --pre-bg: #f1f1f1;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-dark);
+  margin-top: 0em;
+  margin-bottom: 0.8em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 1em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+a {
+  color: var(--primary-green);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--dark-green);
+  text-decoration: underline;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}

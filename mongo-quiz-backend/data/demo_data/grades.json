@@ -1,0 +1,52 @@
+[
+  {
+    "studentId": 301,
+    "courseId": 201,
+    "scores": [
+      { "score": 15.5, "dateAwarded": { "$date": "2024-03-15T10:00:00Z" } },
+      { "score": 17.0, "dateAwarded": { "$date": "2024-05-01T14:30:00Z" } }
+    ]
+  },
+  {
+    "studentId": 301,
+    "courseId": 204,
+    "scores": [
+      { "score": 13.0, "dateAwarded": { "$date": "2024-04-20T09:00:00Z" } }
+    ]
+  },
+  {
+    "studentId": 302,
+    "courseId": 201,
+    "scores": [
+      { "score": 18.5, "dateAwarded": { "$date": "2024-03-20T11:00:00Z" } }
+    ]
+  },
+  {
+    "studentId": 302,
+    "courseId": 202,
+    "scores": [
+      { "score": 9.5, "dateAwarded": { "$date": "2024-05-10T16:00:00Z" } }
+    ]
+  },
+  {
+    "studentId": 303,
+    "courseId": 203,
+    "scores": [
+      { "score": 14.0, "dateAwarded": { "$date": "2024-04-01T13:00:00Z" } }
+    ]
+  },
+  {
+    "studentId": 304,
+    "courseId": 202,
+    "scores": [
+      { "score": 11.0, "dateAwarded": { "$date": "2024-05-12T10:00:00Z" } }
+    ]
+  },
+  {
+    "studentId": 305,
+    "courseId": 201,
+    "scores": [
+      { "score": 16.0, "dateAwarded": { "$date": "2024-03-25T08:00:00Z" } }
+    ]
+  }
+]

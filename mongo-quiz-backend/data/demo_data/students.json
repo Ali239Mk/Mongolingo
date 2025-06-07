@@ -1,0 +1,37 @@
+[
+  {
+    "numId": 301,
+    "firstName": "Emma",
+    "lastName": "Petit",
+    "email": "emma.petit@example.com",
+    "coursesFollowed": [201, 204]
+  },
+  {
+    "numId": 302,
+    "firstName": "Lucas",
+    "lastName": "Roux",
+    "email": "lucas.roux@example.com",
+    "coursesFollowed": [201, 202]
+  },
+  {
+    "numId": 303,
+    "firstName": "Manon",
+    "lastName": "Lambert",
+    "email": "manon.lambert@example.com",
+    "coursesFollowed": [203]
+  },
+  {
+    "numId": 304,
+    "firstName": "Tom",
+    "lastName": "Dupont",
+    "email": "tom.dupont@example.com",
+    "coursesFollowed": [202, 204]
+  },
+  {
+    "numId": 305,
+    "firstName": "Léa",
+    "lastName": "Bernard",
+    "email": "lea.bernard@example.com",
+    "coursesFollowed": [201, 205]
+  }
+]

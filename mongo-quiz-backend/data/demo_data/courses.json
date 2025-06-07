@@ -1,0 +1,37 @@
+[
+  {
+    "numId": 201,
+    "title": "Introduction à MongoDB",
+    "description": "Apprenez les bases de MongoDB et du NoSQL.",
+    "professors": [101],
+    "durationHours": 20
+  },
+  {
+    "numId": 202,
+    "title": "Algorithmes avancés",
+    "description": "Approfondissez les structures de données et les algorithmes complexes.",
+    "professors": [102, 104],
+    "durationHours": 35
+  },
+  {
+    "numId": 203,
+    "title": "Sociologie numérique",
+    "description": "Explorez l'impact du numérique sur la société.",
+    "professors": [103],
+    "durationHours": 15
+  },
+  {
+    "numId": 204,
+    "title": "Développement Web avec React",
+    "description": "Construisez des applications web interactives avec React.",
+    "professors": [101, 104],
+    "durationHours": 40
+  },
+  {
+    "numId": 205,
+    "title": "Analyse de données avec Python",
+    "description": "Introduction à l'analyse de données avec Python.",
+    "professors": [101],
+    "durationHours": 25
+  }
+]

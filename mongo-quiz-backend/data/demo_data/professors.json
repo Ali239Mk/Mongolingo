@@ -1,0 +1,34 @@
+[
+  {
+    "numId": 101,
+    "firstName": "Alice",
+    "lastName": "Durand",
+    "email": "alice.durand@example.com",
+    "department": "Informatique",
+    "coursesTaught": []
+  },
+  {
+    "numId": 102,
+    "firstName": "Bob",
+    "lastName": "Martin",
+    "email": "bob.martin@example.com",
+    "department": "Mathématiques",
+    "coursesTaught": []
+  },
+  {
+    "numId": 103,
+    "firstName": "Carole",
+    "lastName": "Lefebvre",
+    "email": "carole.lefebvre@example.com",
+    "department": "Sciences Sociales",
+    "coursesTaught": []
+  },
+  {
+    "numId": 104,
+    "firstName": "David",
+    "lastName": "Dubois",
+    "email": "david.dubois@example.com",
+    "department": "Informatique",
+    "coursesTaught": []
+  }
+]

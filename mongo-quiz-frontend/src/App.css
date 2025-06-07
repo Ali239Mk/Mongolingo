@@ -1,0 +1,212 @@
+/* ========== GLOBAL ========== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #6db193;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ========== TITRES ========== */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* ========== CARTES ========== */
+.card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-content {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* ========== BOUTONS ========== */
+.button {
+  display: inline-block;
+  background-color: #37123c;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #5c1f60;
+}
+
+.button-secondary {
+  background-color: #71677c;
+}
+
+.button-secondary:hover {
+  background-color: #8a8196;
+}
+
+/* ========== FORMULAIRES ========== */
+.input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* ========== UTILITAIRES ========== */
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.rounded {
+  border-radius: 1rem;
+}
+
+
+/* ========== DATAOVERVIEW ========== */
+.data-overview-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #2d2d2d;
+  background-color: #fdfaf5; 
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.data-overview-title {
+  text-align: center;
+  color: #50a684;
+  margin-bottom: 30px;
+}
+
+.data-overview-description {
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #555;
+}
+
+.section-container {
+  margin-bottom: 40px;
+  padding: 25px;
+  background-color: #f6f2ec; /* beige nude doux */
+  border-radius: 10px;
+  border: 1px solid #e8e2d9;
+}
+
+.section-heading {
+  color: #50a684;
+  font-size: 1.6em;
+  margin-bottom: 15px;
+}
+
+.code-inline {
+  background-color: #e5f3ee;
+  color: #2d6655;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.strong-highlight {
+  color: #3c8f6f;
+}
+
+.preformatted {
+  background-color: #f1f1f1;
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.95em;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.cta-container {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #e4dfd7;
+}
+
+.cta-link {
+  text-decoration: none;
+  padding: 14px 28px;
+  background-color: #50a684;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cta-link:hover {
+  background-color: #3c8f6f;
+}

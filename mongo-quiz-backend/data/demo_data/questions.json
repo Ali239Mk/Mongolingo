@@ -1,0 +1,67 @@
+[
+  {
+    "numId": 1,
+    "description": "Trouvez tous les étudiants qui suivent le cours 'Introduction à MongoDB'.",
+    "level": 1,
+    "options": [
+      { "id": 1, "query": "db.students.find({ coursesFollowed: 201 })" },
+      { "id": 2, "query": "db.courses.find({ title: 'Introduction à MongoDB' })" },
+      { "id": 3, "query": "db.students.findOne({ coursesFollowed: 201 })" },
+      { "id": 4, "query": "db.students.find({ 'coursesFollowed.id': 201 })" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "La requête correcte est db.students.find({ coursesFollowed: 201 }). \nElle recherche dans la collection 'students' tous les documents où le tableau 'coursesFollowed' contient l'ID du cours 201. \nL'option 2 cible la mauvaise collection. \nL'option 3 utilise findOne au lieu de find, renvoyant un seul résultat. \nL'option 4 est incorrecte car 'coursesFollowed' est un tableau d'entiers directs, pas d'objets avec un champ 'id'."
+  },
+  {
+    "numId": 2,
+    "description": "Comptez le nombre total de cours donnés par le professeur 'Alice Durand'.",
+    "level": 2,
+    "options": [
+      { "id": 1, "query": "db.professors.countDocuments({ firstName: 'Alice', lastName: 'Durand' })" },
+      { "id": 2, "query": "db.professors.aggregate([ { $match: { firstName: 'Alice', lastName: 'Durand' } }, { $project: { numId: 0, numCourses: { $size: '$coursesTaught' } } } ])" },
+      { "id": 3, "query": "db.professors.find({ firstName: 'Alice', lastName: 'Durand' }).count()" },
+      { "id": 4, "query": "db.courses.countDocuments({ professors: 101 })" }
+    ],
+    "correctOptionId": 2,
+    "explanation": "La requête correcte est l'agrégation, car elle permet de compter les éléments d'un tableau ('coursesTaught') pour le professeur spécifié. \nL'option 1 compte les documents des professeurs, pas leurs cours. \nL'option 3 est une méthode dépréciée et ne compte pas les cours. \nL'option 4 compte les cours liés au professeur, mais pas directement le nombre de cours *donnés par* le professeur à partir de son propre document."
+  },
+  {
+    "numId": 3,
+    "description": "Trouvez tous les étudiants qui ont obtenu une note supérieure à 15 dans un cours donné.",
+    "level": 3,
+    "options": [
+      { "id": 1, "query": "db.grades.find({ 'scores.score': { $gt: 15 } })" },
+      { "id": 2, "query": "db.students.find({ 'grades.score': { $gt: 15 } })" },
+      { "id": 3, "query": "db.grades.aggregate([ { $unwind: '$scores' }, { $match: { 'scores.score': { $gt: 15 } } }, { $group: { numId: '$studentId' } } ])" },
+      { "id": 4, "query": "db.grades.find({ score: { $gt: 15 } })" }
+    ],
+    "correctOptionId": 3,
+    "explanation": "La requête correcte est une agrégation avec $unwind et $match. '$unwind' déconstruit le tableau 'scores', puis '$match' filtre les notes supérieures à 15, et '$group' regroupe par 'studentId' pour obtenir les étudiants uniques. \nL'option 1 trouverait des documents 'grades' contenant au moins une note > 15, mais ne donne pas les étudiants uniques. \nL'option 2 cible la mauvaise collection. \nL'option 4 est incorrecte car 'score' est imbriqué dans le tableau 'scores'."
+  },
+  {
+    "numId": 4,
+    "description": "Listez les titres des cours qui sont donnés par des professeurs du département 'Informatique'.",
+    "level": 4,
+    "options": [
+      { "id": 1, "query": "db.courses.find({ 'professors.department': 'Informatique' }, { title: 1, numId: 0 })" },
+      { "id": 2, "query": "db.courses.aggregate([ { $lookup: { from: 'professors', localField: 'professors', foreignField: 'numId', as: 'profInfo' } }, { $match: { 'profInfo.department': 'Informatique' } }, { $project: { numId: 0, title: 1 } } ])" },
+      { "id": 3, "query": "db.professors.find({ department: 'Informatique' }, { coursesTaught: 1, numId: 0 })" },
+      { "id": 4, "query": "db.courses.find({ professors: { $in: db.professors.find({ department: 'Informatique' }, { numId: 1 }).map(p => p.numId) } }, { title: 1, numId: 0 })" }
+    ],
+    "correctOptionId": 2,
+    "explanation": "La requête correcte utilise un $lookup pour joindre les informations des professeurs à celles des cours, permettant ensuite de filtrer sur le département. \nL'option 1 est incorrecte car elle essaie d'accéder à 'professors.department' directement dans la collection 'courses' sans jointure. \nL'option 3 renvoie les IDs des cours enseignés par des professeurs d'informatique, mais pas les titres des cours. \nL'option 4, bien que fonctionnelle, est moins performante que l'agrégation avec $lookup pour ce type de jointure."
+  },
+  {
+    "numId": 5,
+    "description": "Trouvez le prénom et le nom des étudiants qui suivent au moins deux cours et dont la durée totale des cours est supérieure à 50 heures.",
+    "level": 5,
+    "options": [
+      { "id": 1, "query": "db.students.find({ coursesFollowed: { $size: { $gte: 2 } } })" },
+      { "id": 2, "query": "db.students.aggregate([ { $match: { $expr: { $gte: [ { $size: '$coursesFollowed' }, 2 ] } } }, { $lookup: { from: 'courses', localField: 'coursesFollowed', foreignField: 'numId', as: 'courseDetails' } }, { $addFields: { totalDuration: { $sum: '$courseDetails.durationHours' } } }, { $match: { totalDuration: { $gt: 50 } } }, { $project: { numId: 0, firstName: 1, lastName: 1 } } ])" },
+      { "id": 3, "query": "db.students.aggregate([ { $lookup: { from: 'courses', localField: 'coursesFollowed', foreignField: 'numId', as: 'courses' } }, { $match: { 'courses.durationHours': { $gt: 50 } } } ])" },
+      { "id": 4, "query": "db.students.find({ 'coursesFollowed.length': { $gte: 2 } })" }
+    ],
+    "correctOptionId": 2,
+    "explanation": "C'est une requête complexe nécessitant une agrégation en plusieurs étapes. \nLa solution correcte utilise $match pour filtrer les étudiants avec au moins 2 cours, $lookup pour récupérer les détails des cours, $addFields pour calculer la durée totale des cours suivis, un second $match pour filtrer par durée totale, et enfin $project pour n'afficher que les prénoms et noms. \nLes autres options sont incomplètes ou incorrectes pour répondre à l'ensemble des critères."
+  }
+]
