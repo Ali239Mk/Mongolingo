@@ -63,5 +63,70 @@
     ],
     "correctOptionId": 2,
     "explanation": "C'est une requête complexe nécessitant une agrégation en plusieurs étapes. \nLa solution correcte utilise $match pour filtrer les étudiants avec au moins 2 cours, $lookup pour récupérer les détails des cours, $addFields pour calculer la durée totale des cours suivis, un second $match pour filtrer par durée totale, et enfin $project pour n'afficher que les prénoms et noms. \nLes autres options sont incomplètes ou incorrectes pour répondre à l'ensemble des critères."
+  },
+  {
+    "numId": 6,
+    "description": "Trouvez le titre de tous les cours qui durent plus de 20 heures.",
+    "level": 1,
+    "options": [
+      { "id": 1, "query": "db.courses.find({ durationHours: { $gt: 20 } }, { title: 1, _id: 0 })" },
+      { "id": 2, "query": "db.courses.find({ durationHours: 20 }, { title: 1 })" },
+      { "id": 3, "query": "db.courses.find({ duration: { $gte: 20 } }, { title: 1 })" },
+      { "id": 4, "query": "db.courses.find({ durationHours: { $lt: 20 } }, { title: 1 })" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "La requête correcte est `db.courses.find({ durationHours: { $gt: 20 } }, { title: 1, _id: 0 })`. \nElle filtre les documents où `durationHours` est strictement supérieur à 20 (`$gt`) et ne projette que le champ `title`, en excluant l'_id par défaut. \nL'option 2 utilise un filtre d'égalité et non de supériorité. \nL'option 3 utilise le champ `duration` qui n'existe pas, il faut utiliser `durationHours`. \nL'option 4 recherche les cours qui durent *moins* de 20 heures (`$lt`), ce qui est l'inverse de la question."
+  },
+  {
+    "numId": 7,
+    "description": "Récupérez tous les professeurs qui enseignent dans le département 'Mathématiques' ou 'Informatique'.",
+    "level": 2,
+    "options": [
+      { "id": 1, "query": "db.professors.find({ department: 'Mathématiques', department: 'Informatique' })" },
+      { "id": 2, "query": "db.professors.find({ $or: [ { department: 'Mathématiques' }, { department: 'Informatique' } ] })" },
+      { "id": 3, "query": "db.professors.find({ department: { $in: ['Mathématiques', 'Informatique'] } })" },
+      { "id": 4, "query": "db.professors.find({ department: 'Mathématiques' }).find({ department: 'Informatique' })" }
+    ],
+    "correctOptionId": 3,
+    "explanation": "La requête correcte est `db.professors.find({ department: { $in: ['Mathématiques', 'Informatique'] } })`. \nElle utilise l'opérateur `$in` pour trouver les documents où le champ `department` correspond à l'une des valeurs du tableau fourni. C'est la syntaxe la plus concise et idiomatique pour un 'OR' sur un même champ. \nL'option 1 est incorrecte car MongoDB interprète cela comme un AND, le deuxième `department` écrasant le premier. \nL'option 2 est correcte et fonctionnelle, mais `$in` est plus élégant pour ce cas précis. \nL'option 4 enchaîne deux appels `find()`, ce qui est une syntaxe invalide en MongoDB."
+  },
+  {
+    "numId": 8,
+    "description": "Trouvez le prénom et le nom de l'étudiant ayant la note la plus élevée dans le cours 'Introduction à MongoDB'.",
+    "level": 3,
+    "options": [
+      { "id": 1, "query": "db.grades.find({ courseId: 201 }).sort({ 'scores.score': -1 }).limit(1)" },
+      { "id": 2, "query": "db.grades.aggregate([ { $match: { courseId: 201 } }, { $unwind: '$scores' }, { $sort: { 'scores.score': -1 } }, { $limit: 1 }, { $lookup: { from: 'students', localField: 'studentId', foreignField: 'numId', as: 'studentInfo' } }, { $unwind: '$studentInfo' }, { $project: { _id: 0, firstName: '$studentInfo.firstName', lastName: '$studentInfo.lastName' } } ])" },
+      { "id": 3, "query": "db.students.aggregate([ { $lookup: { from: 'grades', localField: 'numId', foreignField: 'studentId', as: 'gradesInfo' } }, { $match: { 'gradesInfo.courseId': 201 } } ])" },
+      { "id": 4, "query": "db.grades.aggregate([ { $match: { courseId: 201 } }, { $unwind: '$scores' }, { $group: { _id: '$studentId', maxScore: { $max: '$scores.score' } } }, { $sort: { maxScore: -1 } }, { $limit: 1 } ])" }
+    ],
+    "correctOptionId": 2,
+    "explanation": "La requête correcte est une agrégation complexe. Elle filtre d'abord les notes pour le bon cours, '$unwind' les scores pour traiter chaque note individuellement, '$sort' par score décroissant, '$limit' à 1 pour la meilleure note. Ensuite, un '$lookup' est nécessaire pour joindre les informations de l'étudiant et enfin '$project' pour afficher uniquement le prénom et le nom. \nL'option 1 ne fonctionne pas directement car elle ne gère pas les tableaux imbriqués et ne joint pas la collection `students`. \nL'option 3 est incomplète ; elle joint les notes mais ne trouve pas la meilleure note ni l'étudiant correspondant. \nL'option 4 trouve l'ID de l'étudiant et la note maximale, mais ne récupère pas le prénom et le nom de l'étudiant."
+  },
+  {
+    "numId": 9,
+    "description": "Pour chaque cours, calculez le nombre total d'heures de cours enseignées par des professeurs du département 'Informatique'.",
+    "level": 4,
+    "options": [
+      { "id": 1, "query": "db.courses.aggregate([ { $lookup: { from: 'professors', localField: 'professors', foreignField: 'numId', as: 'profDetails' } }, { $unwind: '$profDetails' }, { $match: { 'profDetails.department': 'Informatique' } }, { $group: { _id: '$title', totalDuration: { $sum: '$durationHours' } } } ])" },
+      { "id": 2, "query": "db.professors.find({ department: 'Informatique' }, { coursesTaught: 1 })" },
+      { "id": 3, "query": "db.courses.aggregate([ { $lookup: { from: 'professors', localField: 'professors', foreignField: 'numId', as: 'profDetails' } }, { $group: { _id: '$title', informaticsProfessors: { $filter: { input: '$profDetails', as: 'prof', cond: { $eq: [ '$$prof.department', 'Informatique' ] } } } } }, { $addFields: { informaticsDuration: { $cond: { if: { $gt: [ { $size: '$informaticsProfessors' }, 0 ] }, then: '$durationHours', else: 0 } } } }, { $group: { _id: '$_id', totalInformaticsDuration: { $sum: '$informaticsDuration' } } } ])" },
+      { "id": 4, "query": "db.courses.find({ 'professors.department': 'Informatique' }).map(c => c.durationHours).sum()" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "La requête correcte est une agrégation qui commence par un `$lookup` pour joindre les professeurs aux cours. `$unwind` déconstruit le tableau `profDetails` pour traiter chaque professeur individuellement. On filtre ensuite (`$match`) par département 'Informatique' et enfin on '$group' par titre de cours pour sommer les `durationHours`. \nL'option 2 ne renvoie que les IDs des cours enseignés par les professeurs d'informatique, sans le calcul des heures par cours. \nL'option 3 est une approche trop complexe et incorrecte pour le calcul de la durée totale. \nL'option 4 tente d'utiliser des méthodes JavaScript directement sur le curseur MongoDB, ce qui ne fonctionnera pas dans un environnement de requête serveur et ne ferait pas le regroupement par cours."
+  },
+  {
+    "numId": 10,
+    "description": "Trouvez le prénom et le nom de l'étudiant qui a la moyenne de notes la plus basse parmi tous les cours qu'il a suivis.",
+    "level": 5,
+    "options": [
+      { "id": 1, "query": "db.grades.aggregate([ { $group: { _id: '$studentId', avgScore: { $avg: '$scores.score' } } }, { $sort: { avgScore: 1 } }, { $limit: 1 } ])" },
+      { "id": 2, "query": "db.grades.aggregate([ { $unwind: '$scores' }, { $group: { _id: '$studentId', avgScore: { $avg: '$scores.score' } } }, { $sort: { avgScore: 1 } }, { $limit: 1 }, { $lookup: { from: 'students', localField: '_id', foreignField: 'numId', as: 'studentInfo' } }, { $unwind: '$studentInfo' }, { $project: { _id: 0, firstName: '$studentInfo.firstName', lastName: '$studentInfo.lastName', avgScore: 1 } } ])" },
+      { "id": 3, "query": "db.students.find().sort({ 'grades.score': 1 }).limit(1)" },
+      { "id": 4, "query": "db.grades.aggregate([ { $unwind: '$scores' }, { $sortByCount: '$studentId' } ])" }
+    ],
+    "correctOptionId": 2,
+    "explanation": "La requête correcte est une agrégation en plusieurs étapes : d'abord, `$unwind` les scores pour calculer une moyenne par note individuelle pour chaque étudiant, puis `$group` par `studentId` pour calculer la moyenne de toutes les notes d'un étudiant (`$avg`). Ensuite, on `$sort` par cette moyenne (`avgScore`) en ordre croissant (`1`) et on `$limit` à 1 pour obtenir l'étudiant avec la moyenne la plus basse. Enfin, un `$lookup` est nécessaire pour récupérer les informations de l'étudiant (`firstName`, `lastName`) à partir de la collection `students` et les projeter. \nL'option 1 calcule la moyenne par étudiant mais ne renvoie pas le prénom et le nom de l'étudiant. De plus, son `$avg` sur `$scores.score` sans `$unwind` préalable serait incorrect si un document `grades` contenait plusieurs notes pour un même cours/étudiant. \nL'option 3 est incorrecte car elle tente de trier directement les étudiants sur un champ `grades.score` qui n'existe pas dans la collection `students` et ne fait aucun calcul de moyenne. \nL'option 4 utilise `$sortByCount`, qui compterait le nombre d'occurrences de chaque `studentId` et ne calculerait pas la moyenne des notes."
   }
 ]

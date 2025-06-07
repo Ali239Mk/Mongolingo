@@ -1,0 +1,262 @@
+[
+  {
+    "numId": 11,
+    "description": "Quelle est la commande MongoDB pour afficher toutes les bases de données disponibles sur ton serveur ?",
+    "level": 1,
+    "options": [
+      { "id": 1, "query": "show dbs" },
+      { "id": 2, "query": "list databases" },
+      { "id": 3, "query": "display dbs" },
+      { "id": 4, "query": "mongo.showDbs()" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "La commande `show dbs` est la syntaxe standard et correcte pour lister toutes les bases de données dans le shell MongoDB. \nLes autres options (`list databases`, `display dbs`, `mongo.showDbs()`) ne sont pas des commandes MongoDB valides."
+  },
+  {
+    "numId": 12,
+    "description": "Comment te connectes-tu à la base de données `mongolingo_db` dans le shell MongoDB ?",
+    "level": 1,
+    "options": [
+      { "id": 1, "query": "connect mongolingo_db" },
+      { "id": 2, "query": "use mongolingo_db" },
+      { "id": 3, "query": "select mongolingo_db" },
+      { "id": 4, "query": "db.connect(\"mongolingo_db\")" }
+    ],
+    "correctOptionId": 2,
+    "explanation": "La commande `use <dbname>` (ici `use mongolingo_db`) est la méthode standard pour basculer vers une base de données existante. \nSi la base de données n'existe pas, cette commande la crée automatiquement. Les autres options ne sont pas des commandes MongoDB valides pour cette action."
+  },
+  {
+    "numId": 13,
+    "description": "Pour trouver tous les étudiants dans la collection `students`, quelle commande utiliserais-tu ?",
+    "level": 1,
+    "options": [
+      { "id": 1, "query": "db.students.getAll()" },
+      { "id": 2, "query": "db.students.findMany()" },
+      { "id": 3, "query": "db.students.find({})" },
+      { "id": 4, "query": "db.students.fetch()" }
+    ],
+    "correctOptionId": 3,
+    "explanation": "La méthode `find({})` sans aucun critère de recherche (avec un objet vide `{}`) est la commande correcte pour retourner tous les documents d'une collection. \nLes options `getAll()`, `findMany()`, et `fetch()` ne sont pas des méthodes standard du shell MongoDB pour cette opération."
+  },
+  {
+    "numId": 14,
+    "description": "Quel champ est supposé être unique pour chaque étudiant dans la collection `students` selon le schéma de Mongolingo Campus ?",
+    "level": 1,
+    "options": [
+      { "id": 1, "query": "firstName" },
+      { "id": 2, "query": "email" },
+      { "id": 3, "query": "lastName" },
+      { "id": 4, "query": "coursesFollowed" }
+    ],
+    "correctOptionId": 2,
+    "explanation": "Selon les conventions de modélisation des données et souvent pour l'identification unique dans les systèmes utilisateurs, l'adresse e-mail (`email`) est typiquement le champ défini comme unique pour chaque étudiant. \n`firstName`, `lastName` ou `coursesFollowed` ne garantissent pas l'unicité."
+  },
+  {
+    "numId": 15,
+    "description": "Dans MongoDB, quel est l'équivalent d'une 'table' dans une base de données relationnelle ?",
+    "level": 1,
+    "options": [
+      { "id": 1, "query": "Un document" },
+      { "id": 2, "query": "Une collection" },
+      { "id": 3, "query": "Une base de données" },
+      { "id": 4, "query": "Un champ" }
+    ],
+    "correctOptionId": 2,
+    "explanation": "Une Collection dans MongoDB est l'équivalent conceptuel d'une table dans une base de données relationnelle, servant à grouper des documents. \nUn document est l'équivalent d'une ligne ou d'un enregistrement, une base de données est le conteneur de collections, et un champ est une colonne ou un attribut."
+  },
+  {
+    "numId": 16,
+    "description": "Tu veux trouver tous les professeurs du département \"Informatique\". Quelle requête est correcte ?",
+    "level": 2,
+    "options": [
+      { "id": 1, "query": "db.professors.find({ department: \"Informatique\" })" },
+      { "id": 2, "query": "db.professors.find(\"department\": \"Informatique\")" },
+      { "id": 3, "query": "db.professors.where(\"department\" = \"Informatique\")" },
+      { "id": 4, "query": "db.professors.filterByDepartment(\"Informatique\")" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "Pour filtrer les documents, on utilise la méthode `find()` en lui passant un objet de critères `{ champ: valeur }`. \nL'option 2 est une syntaxe incorrecte (manque les accolades). \nLes options 3 et 4 utilisent des méthodes qui n'existent pas ou une syntaxe invalide pour MongoDB."
+  },
+  {
+    "numId": 17,
+    "description": "Comment insères-tu un nouveau cours avec le `numId` 500, le titre \"DevOps avec MongoDB\" et une description, dans la collection `courses` ?",
+    "level": 2,
+    "options": [
+      { "id": 1, "query": "db.courses.insert({ numId: 500, title: \"DevOps avec MongoDB\", description: \"...\" })" },
+      { "id": 2, "query": "db.courses.add({ numId: 500, title: \"DevOps avec MongoDB\", description: \"...\" })" },
+      { "id": 3, "query": "db.courses.createOne({ numId: 500, title: \"DevOps avec MongoDB\", description: \"...\" })" },
+      { "id": 4, "query": "db.courses.save({ numId: 500, title: \"DevOps avec MongoDB\", description: \"...\" })" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "La méthode `insert()` (ou plus spécifiquement `insertOne()` pour un seul document ou `insertMany()` pour plusieurs) est utilisée pour ajouter de nouveaux documents à une collection. \nLes autres options (`add()`, `createOne()`, `save()`) ne sont pas des méthodes standard de l'API de base de MongoDB pour l'insertion de documents."
+  },
+  {
+    "numId": 18,
+    "description": "Pour mettre à jour l'email de l'étudiant avec `numId: 301` à `\"nouveau.email@example.com\"`, quelle commande utiliserais-tu ?",
+    "level": 2,
+    "options": [
+      { "id": 1, "query": "db.students.update({ numId: 301 }, { email: \"nouveau.email@example.com\" })" },
+      { "id": 2, "query": "db.students.replaceOne({ numId: 301 }, { email: \"nouveau.email@example.com\" })" },
+      { "id": 3, "query": "db.students.updateOne({ numId: 301 }, { $set: { email: \"nouveau.email@example.com\" } })" },
+      { "id": 4, "query": "db.students.edit({ numId: 301 }, { email: \"nouveau.email@example.com\" })" }
+    ],
+    "correctOptionId": 3,
+    "explanation": "La méthode `updateOne()` est utilisée pour mettre à jour un seul document. \nPour modifier la valeur d'un champ existant sans remplacer tout le document, on utilise l'opérateur `$set`. \nL'option 1 utilise une syntaxe dépréciée ou incomplète sans opérateur. \nL'option 2 `replaceOne()` remplacerait tout le document, perdant les autres champs. \nL'option 4 est une méthode inexistante."
+  },
+  {
+    "numId": 19,
+    "description": "Un étudiant avec `numId: 301` est inscrit au cours avec `numId: 201`. Comment trouverais-tu toutes ses notes pour ce cours spécifique dans la collection `grades` ?",
+    "level": 2,
+    "options": [
+      { "id": 1, "query": "db.grades.find({ studentId: 301, courseId: 201 })" },
+      { "id": 2, "query": "db.grades.find({ grades: { $elemMatch: { studentId: 301, courseId: 201 } } })" },
+      { "id": 3, "query": "db.grades.filter({ student: 301, course: 201 })" },
+      { "id": 4, "query": "db.grades.getNotes(301, 201)" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "Pour trouver des documents qui correspondent à plusieurs critères, tu peux les combiner directement dans l'objet de filtre de `find()` en utilisant une conjonction implicite (AND). \nL'option 2 est incorrecte car elle cherche dans un champ `grades` inexistant et mal utilisé `$elemMatch`. \nLes options 3 et 4 sont des méthodes inexistantes."
+  },
+  {
+    "numId": 20,
+    "description": "Quel opérateur MongoDB est utilisé pour trouver des documents où la valeur d'un champ est strictement supérieure à une certaine valeur ?",
+    "level": 2,
+    "options": [
+      { "id": 1, "query": "$gt" },
+      { "id": 2, "query": "$lt" },
+      { "id": 3, "query": "$eq" },
+      { "id": 4, "query": "$gte" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "L'opérateur `$gt` signifie 'greater than' (strictement supérieur à) et est utilisé pour les comparaisons numériques. \n`$lt` signifie 'less than', `$eq` signifie 'equal' (mais est implicite si non utilisé), et `$gte` signifie 'greater than or equal' (supérieur ou égal)."
+  },
+  {
+    "numId": 21,
+    "description": "Tu veux trouver le nombre moyen de notes (`score`) pour chaque étudiant dans le cours `numId: 201`. Quelle étape d'agrégation utiliserais-tu après un `$match` sur `courseId` pour calculer cette moyenne par étudiant ?",
+    "level": 3,
+    "options": [
+      { "id": 1, "query": "$sum" },
+      { "id": 2, "query": "$avg" },
+      { "id": 3, "query": "$group avec $avg" },
+      { "id": 4, "query": "$project avec $avg" }
+    ],
+    "correctOptionId": 3,
+    "explanation": "Pour calculer une moyenne par groupe (ici, par étudiant), il faut d'abord utiliser l'étape d'agrégation `$group` pour regrouper les documents par `studentId`, puis utiliser l'accumulateur `$avg` au sein de ce `$group` pour calculer la moyenne des notes pour chaque groupe. \n`$sum` et `$avg` seuls sont des accumulateurs qui s'utilisent à l'intérieur de `$group` ou `$project` dans certains contextes, mais ne sont pas des étapes d'agrégation autonomes pour ce type de calcul. `$project` est pour remodeler des documents."
+  },
+  {
+    "numId": 22,
+    "description": "Comment peux-tu t'assurer qu'un nouveau document dans la collection `courses` ne peut être inséré que si son champ `durationHours` est entre 1 et 500 inclus, en utilisant la validation de schéma MongoDB ?",
+    "level": 3,
+    "options": [
+      { "id": 1, "query": "db.createCollection(\"courses\", { validator: { $jsonSchema: { properties: { durationHours: { minimum: 1, maximum: 500 } } } } })" },
+      { "id": 2, "query": "db.courses.addValidation({ durationHours: { $gte: 1, $lte: 500 } })" },
+      { "id": 3, "query": "db.courses.setRule({ durationHours: { $in: [1, 500] } })" },
+      { "id": 4, "query": "db.courses.schema({ durationHours: Number().min(1).max(500) })" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "La validation de schéma est définie lors de la création d'une collection (ou modifiée avec `collMod`) en utilisant l'option `validator` et en spécifiant un `$jsonSchema`. \nÀ l'intérieur du `$jsonSchema`, les mots-clés `minimum` et `maximum` (ou `$gte`/`$lte`) sont utilisés pour définir les contraintes numériques. \nLes autres options ne sont pas des syntaxes standard pour la validation de schéma MongoDB."
+  },
+  {
+    "numId": 23,
+    "description": "Pour trouver tous les cours enseignés par le professeur avec `numId: 101` et projeter uniquement le `title` du cours, quelle requête est la plus simple et appropriée ?",
+    "level": 3,
+    "options": [
+      { "id": 1, "query": "db.courses.find({ professors: 101 }, { title: 1 })" },
+      { "id": 2, "query": "db.courses.aggregate([ { $match: { professors: 101 } }, { $project: { title: 1, _id: 0 } } ])" },
+      { "id": 3, "query": "db.professors.aggregate([ { $lookup: { from: \"courses\", localField: \"coursesTaught\", foreignField: \"numId\", as: \"taughtCourses\" } }, { $unwind: \"$taughtCourses\" }, { $match: { \"numId\": 101 } }, { $project: { \"taughtCourses.title\": 1, _id: 0 } } ])" },
+      { "id": 4, "query": "db.courses.find({ \"professors\": { $in: [101] } }).select(\"title\")" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "Dans ce cas simple de filtre et projection sur une seule collection, la méthode `find()` est la plus directe et la plus performante. \nElle permet à la fois de filtrer les documents (`{ professors: 101 }`) et de projeter les champs désirés (`{ title: 1 }`). \nL'option 2 est également valide (utilisation d'agrégation), mais plus complexe que nécessaire pour cette tâche. \nL'option 3 est une agrégation beaucoup trop complexe qui part des professeurs, alors qu'il est plus simple de partir des cours. \nL'option 4 utilise `.select()` qui est une méthode Mongoose/pilote Node.js et non une commande du shell MongoDB."
+  },
+  {
+    "numId": 24,
+    "description": "Comment peux-tu optimiser les requêtes fréquentes de recherche et de filtrage sur le champ `numId` de la collection `students` ?",
+    "level": 3,
+    "options": [
+      { "id": 1, "query": "En ajoutant un index sur le champ `_id`." },
+      { "id": 2, "query": "En ajoutant un index unique sur le champ `email`." },
+      { "id": 3, "query": "En ajoutant un index sur le champ `numId`." },
+      { "id": 4, "query": "En réorganisant les documents physiquement." }
+    ],
+    "correctOptionId": 3,
+    "explanation": "Créer un index sur le champ `numId` (`db.students.createIndex({ numId: 1 })`) est la méthode la plus efficace pour accélérer les requêtes de recherche et de tri sur ce champ. \nL'index `_id` est déjà unique et par défaut, mais n'aide pas pour les requêtes sur `numId`. \nUn index sur `email` n'aiderait que les requêtes sur `email`. \nLa réorganisation physique n'est pas une méthode d'optimisation standard et automatique dans MongoDB."
+  },
+  {
+    "numId": 25,
+    "description": "Tu veux récupérer les noms complets (`firstName` et `lastName`) de tous les étudiants qui suivent le cours \"Introduction à MongoDB\". Quelle est la meilleure approche en utilisant l'agrégation et le `$lookup` ?",
+    "level": 3,
+    "options": [
+      { "id": 1, "query": "Chercher le `numId` du cours, puis trouver les étudiants avec ce `numId` dans `coursesFollowed`, puis projeter." },
+      { "id": 2, "query": "db.students.aggregate([ { $lookup: { from: \"courses\", localField: \"coursesFollowed\", foreignField: \"numId\", as: \"enrolledCourses\" } }, { $match: { \"enrolledCourses.title\": \"Introduction à MongoDB\" } }, { $project: { fullName: { $concat: [\"$firstName\", \" \", \"$lastName\"] }, _id: 0 } } ])" },
+      { "id": 3, "query": "db.courses.aggregate([ { $match: { title: \"Introduction à MongoDB\" } }, { $lookup: { from: \"students\", localField: \"numId\", foreignField: \"coursesFollowed\", as: \"studentsEnrolled\" } }, { $unwind: \"$studentsEnrolled\" }, { $project: { fullName: { $concat: [\"$studentsEnrolled.firstName\", \" \", \"$studentsEnrolled.lastName\"] }, _id: 0 } } ])" },
+      { "id": 4, "query": "Les options 2 et 3 sont toutes les deux de bonnes approches d'agrégation." }
+    ],
+    "correctOptionId": 4,
+    "explanation": "Les deux requêtes d'agrégation (Options 2 et 3) sont des approches valides et efficaces pour résoudre ce problème de jointure et de filtrage. \nL'option 2 part de la collection `students` et joint les `courses`, tandis que l'option 3 part de la collection `courses` et joint les `students`. \nLes deux utilisent correctement `$lookup` pour la jointure, `$match` pour le filtrage, et `$project` avec `$concat` pour formater le nom complet, démontrant la flexibilité de l'agrégation."
+  },
+  {
+    "numId": 26,
+    "description": "Comptez le nombre total d'étudiants qui n'ont suivi aucun cours.",
+    "level": 4,
+    "options": [
+      { "id": 1, "query": "db.students.countDocuments({ coursesFollowed: [] })" },
+      { "id": 2, "query": "db.students.find({ coursesFollowed: { $size: 0 } }).count()" },
+      { "id": 3, "query": "db.students.aggregate([ { $match: { coursesFollowed: { $exists: true, $size: 0 } } }, { $count: \"noCoursesStudents\" } ])" },
+      { "id": 4, "query": "db.students.count({ coursesFollowed: null })" }
+    ],
+    "correctOptionId": 3,
+    "explanation": "La requête correcte est une agrégation avec `$match` pour filtrer les documents où le tableau `coursesFollowed` existe et a une taille de 0, puis `$count` pour obtenir le nombre. \nL'option 1 est proche mais `countDocuments()` est une meilleure pratique que `count()` et la syntaxe pour la taille du tableau est plus robuste avec `$size`. \nL'option 2 utilise `count()` qui est déprécié. \nL'option 4 recherche des étudiants dont le champ `coursesFollowed` est `null`, ce qui est différent d'un tableau vide."
+  },
+  {
+    "numId": 27,
+    "description": "Listez les titres des cours qui ont été notés (ont des entrées dans `grades`) et qui ont une durée de plus de 30 heures.",
+    "level": 4,
+    "options": [
+      { "id": 1, "query": "db.courses.find({ durationHours: { $gt: 30 } })" },
+      { "id": 2, "query": "db.grades.aggregate([ { $group: { _id: '$courseId' } }, { $lookup: { from: 'courses', localField: '_id', foreignField: 'numId', as: 'courseInfo' } }, { $unwind: '$courseInfo' }, { $match: { 'courseInfo.durationHours': { $gt: 30 } } }, { $project: { _id: 0, title: '$courseInfo.title' } } ])" },
+      { "id": 3, "query": "db.courses.aggregate([ { $match: { durationHours: { $gt: 30 } } }, { $lookup: { from: 'grades', localField: 'numId', foreignField: 'courseId', as: 'gradesInfo' } }, { $match: { 'gradesInfo.0': { $exists: true } } }, { $project: { _id: 0, title: 1 } } ])" },
+      { "id": 4, "query": "Les options 2 et 3 sont toutes les deux de bonnes approches d'agrégation." }
+    ],
+    "correctOptionId": 4,
+    "explanation": "Les options 2 et 3 sont toutes deux des approches valides et efficaces pour résoudre ce problème. \nL'option 2 part de la collection `grades`, regroupe par `courseId`, puis effectue un `$lookup` vers `courses` pour filtrer par `durationHours` et projeter le titre. \nL'option 3 part de la collection `courses`, filtre par `durationHours`, puis effectue un `$lookup` vers `grades` et vérifie si le tableau `gradesInfo` contient au moins une entrée (`$exists: true`) pour s'assurer que le cours a été noté, avant de projeter le titre. Les deux démontrent une bonne maîtrise des jointures (`$lookup`) et du filtrage (`$match`) en agrégation. \nL'option 1 est incomplète car elle ne vérifie pas si les cours ont été notés."
+  },
+  {
+    "numId": 28,
+    "description": "Ajoutez un nouveau cours à la collection `courses` avec `numId: 206`, un titre \"Bases de données NoSQL\", une description, et enseigné par le professeur `numId: 102`. Si un cours avec `numId: 206` existe déjà, ne rien faire.",
+    "level": 4,
+    "options": [
+      { "id": 1, "query": "db.courses.insertOne({ numId: 206, title: \"Bases de données NoSQL\", description: \"...\", professors: [102] })" },
+      { "id": 2, "query": "db.courses.update({ numId: 206 }, { $set: { title: \"Bases de données NoSQL\", description: \"...\", professors: [102] } }, { upsert: true })" },
+      { "id": 3, "query": "db.courses.updateOne({ numId: 206 }, { $setOnInsert: { numId: 206, title: \"Bases de données NoSQL\", description: \"...\", professors: [102] } }, { upsert: true })" },
+      { "id": 4, "query": "db.courses.replaceOne({ numId: 206 }, { numId: 206, title: \"Bases de données NoSQL\", description: \"...\", professors: [102] }, { upsert: true })" }
+    ],
+    "correctOptionId": 3,
+    "explanation": "La méthode `updateOne()` avec l'option `upsert: true` et l'opérateur `$setOnInsert` est la solution idéale. \n`upsert: true` signifie que si le document n'existe pas, il sera inséré. \n`$setOnInsert` s'assure que les champs spécifiés ne sont définis que lors d'une insertion (quand un nouveau document est créé), pas lors d'une mise à jour d'un document existant. \nL'option 1 `insertOne()` insérerait une erreur si le document existe déjà (si `numId` est unique). \nL'option 2 `update()` est une méthode dépréciée et `upsert` avec `$set` mettrait à jour même si le document existe. \nL'option 4 `replaceOne()` remplacerait tout le document existant, ce qui n'est pas le comportement désiré ('ne rien faire si existe')."
+  },
+  {
+    "numId": 29,
+    "description": "Trouvez le nombre total de notes (`score`) qui ont été attribuées après le 1er avril 2024 (inclus).",
+    "level": 4,
+    "options": [
+      { "id": 1, "query": "db.grades.aggregate([ { $unwind: '$scores' }, { $match: { 'scores.dateAwarded': { $gte: ISODate(\"2024-04-01T00:00:00Z\") } } }, { $count: 'notesAfterApril1st' } ])" },
+      { "id": 2, "query": "db.grades.find({ 'scores.dateAwarded': { $gt: new Date('2024-04-01') } }).count()" },
+      { "id": 3, "query": "db.grades.countDocuments({ 'scores.dateAwarded': { $gte: ISODate('2024-04-01T00:00:00Z') } })" },
+      { "id": 4, "query": "db.grades.find({ 'scores.dateAwarded': { $gte: '2024-04-01' } }).count()" }
+    ],
+    "correctOptionId": 1,
+    "explanation": "La requête correcte est une agrégation. Il faut d'abord `$unwind` le tableau `scores` pour pouvoir filtrer chaque note individuellement par sa date d'attribution (`dateAwarded`), puis utiliser `$match` avec `$gte` et un objet `ISODate` pour comparer les dates, et enfin `$count` pour obtenir le nombre total. \nL'option 2 et 3 sont incorrectes car sans `$unwind`, elles ne peuvent pas garantir que chaque note du tableau correspond au critère de date, mais plutôt que le document `grades` contient *au moins une* note après cette date. De plus, `count()` est déprécié. \nL'option 4 utilise une chaîne de caractères pour la date, ce qui pourrait ne pas fonctionner comme attendu pour les comparaisons de dates."
+  },
+  {
+    "numId": 30,
+    "description": "Supprimez tous les professeurs qui n'enseignent aucun cours (leur tableau `coursesTaught` est vide).",
+    "level": 4,
+    "options": [
+      { "id": 1, "query": "db.professors.deleteMany({ coursesTaught: [] })" },
+      { "id": 2, "query": "db.professors.remove({ coursesTaught: { $size: 0 } })" },
+      { "id": 3, "query": "db.professors.deleteMany({ coursesTaught: { $exists: true, $size: 0 } })" },
+      { "id": 4, "query": "db.professors.deleteOne({ coursesTaught: { $size: 0 } })" }
+    ],
+    "correctOptionId": 3,
+    "explanation": "La requête correcte est `db.professors.deleteMany({ coursesTaught: { $exists: true, $size: 0 } })`. \n`deleteMany()` est la méthode moderne pour supprimer plusieurs documents. Le critère `{ $exists: true, $size: 0 }` est le plus robuste pour s'assurer que le champ `coursesTaught` est bien un tableau vide. \nL'option 1 est fonctionnelle mais l'ajout de `$exists: true` rend le filtre plus explicite. \nL'option 2 utilise `remove()` qui est une méthode dépréciée. \nL'option 4 `deleteOne()` ne supprimerait qu'un seul professeur même si plusieurs correspondent au critère."
+  }
+]
