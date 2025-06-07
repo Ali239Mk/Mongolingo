@@ -1,11 +1,11 @@
 # Mongolingo : Maîtrise MongoDB avec un Quiz Interactif
 
-## 🚀 Introduction au Projet
+## 🚀 Introduction au Projet
 Bienvenue sur Mongolingo ! Cette application web, développée en React, a été conçue dans le cadre de l'unité d'enseignement R403 "Qualité et au-delà du relationnel" de ma 2ème année de BUT Informatique (BUT2). L'objectif principal de ce projet est de fournir une plateforme interactive, inspirée du principe des quiz de Duolingo, pour s'exercer et perfectionner ses compétences en requêtes MongoDB (NoSQL).
 
 Étudiante en 2ème année de BUT Informatique, j'ai travaillé sur la conception de bases de données NoSQL, l'implémentation de schémas de validation, la gestion des données, et le développement d'une interface utilisateur dynamique avec React.
 
-## ✨ Fonctionnalités Clés
+## Fonctionnalités Clés
 Mongolingo offre une expérience d'apprentissage complète grâce aux fonctionnalités suivantes :
 
     Quiz Interactif MongoDB :
@@ -21,21 +21,23 @@ Mongolingo offre une expérience d'apprentissage complète grâce aux fonctionna
         L'application permet aux utilisateurs de charger des données dans la base de données.
         Des fonctionnalités de sauvegarde des données sont disponibles aux formats JSON et BSON, offrant flexibilité et robustesse pour la gestion de la base de données.
 
-## 🛠️ Technologies Utilisées
+## Technologies Utilisées
     Frontend : React.js
     Backend : Node.js (Express.js)
     Base de Données : MongoDB
 
-## ⚙️ Installation et Lancement
+## Installation et Lancement
 Pour installer et lancer Mongolingo sur votre machine (testé sur Ubuntu récente) :
     Prérequis :
         Assurez-vous d'avoir Node.js (avec npm ou yarn) et MongoDB installés et fonctionnels sur votre système.
+        
         Tout est indiqué plus en détail dans les readme de chaque partie avec un schéma de chaque structure.
+    
     Clonage du Dépôt :
-    ```bash
+```bash
     git clone https://votre-lien-du-depot/mongolingo.git
     cd mongolingo
-    ```
+```
 
 Configuration de la Base de Données :
     Créez une base de données MongoDB nommée mongoQuizDB (ou configurez le nom dans votre fichier .env si un autre nom est utilisé).

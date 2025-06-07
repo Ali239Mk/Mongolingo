@@ -34,6 +34,7 @@ Assure-toi également que le backend de **Mongolingo** est en cours d'exécution
 ### 2.1. Cloner le dépôt
 
 Dépot GitHub disponible au [https://github.com/Ali239Mk/Mongolingo/tree/main/mongo-quiz-frontend](https://github.com/Ali239Mk/Mongolingo/tree/main/mongo-quiz-frontend)
+
 Si ce n'est pas déjà fait, clone le dépôt de ton frontend et navigue dans le dossier :
 
 ```bash
