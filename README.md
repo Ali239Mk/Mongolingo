@@ -3,7 +3,7 @@
 ## 🚀 Introduction au Projet
 Bienvenue sur Mongolingo ! Cette application web, développée en React, a été conçue dans le cadre de l'unité d'enseignement R403 "Qualité et au-delà du relationnel" de ma 2ème année de BUT Informatique (BUT2). L'objectif principal de ce projet est de fournir une plateforme interactive, inspirée du principe des quiz de Duolingo, pour s'exercer et perfectionner ses compétences en requêtes MongoDB (NoSQL).
 
-Étudiante en 2ème année de BUT Informatique, j'ai travaillé sur la conception de bases de données NoSQL, l'implémentation de schémas de validation, la gestion des données, et le développement d'une interface utilisateur dynamique avec React.
+Étudiante de BUT Informatique, j'ai travaillé sur la conception de bases de données NoSQL, l'implémentation de schémas de validation, la gestion des données, et le développement d'une interface utilisateur dynamique avec React.
 
 ## Fonctionnalités Clés
 Mongolingo offre une expérience d'apprentissage complète grâce aux fonctionnalités suivantes :
