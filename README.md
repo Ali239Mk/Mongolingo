@@ -47,8 +47,6 @@ Configuration de la Base de Données :
 ## 🎥 Démonstration Vidéo
 
 Une vidéo de démonstration de 2 minutes est disponible pour vous donner un aperçu rapide du fonctionnement de Mongolingo :
-Installation : https://youtu.be/BJ3R9YMyiQw
-Utilisation, fonctionnalités : https://youtu.be/KC7cMCvZftg
 
 
 ## 📂 Structure du Projet
