@@ -64,6 +64,7 @@ L'application s'ouvrira automatiquement dans ton navigateur par défaut.
 
 Voici un aperçu simplifié de la structure des dossiers et fichiers clés du frontend :
 
+``` 
 mongo-quiz-frontend/
 ├── node_modules/
 ├── public/
@@ -78,12 +79,13 @@ mongo-quiz-frontend/
 │   │   ├── DataManagement.js
 │   ├── resources/            
 │   │   ├── questions2.js  # Questions supplémentaires pour tester l'importation de fichier json et ajouter 20 questions au quiz
-│   ├── styles/            # Fichiers de styles CSS
+│   ├── styles/
 │   │   └── App.css
 
 ├── .gitignore
 ├── package.json
 └── README.md              # Ce fichier
+``` 
 
 ## 4. Technologies Utilisées
 

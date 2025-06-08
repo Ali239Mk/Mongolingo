@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const questionsSchema = new mongoose.Schema({
     numId: { type: Number, required: true, unique: true }, // ID unique pour chaque question
-    desciption: { type: String, required: true, minlength: 10 }, // Enoncé
+    description: { type: String, required: true, minlength: 10 }, // Enoncé
     level: { type: Number, required: true, min: 1, max: 5 }, // Niveau de difficulté de la question (1 à 5)
     options: {
         type: [{ 

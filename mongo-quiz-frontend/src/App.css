@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #6db193;
+  background-color: #ffff;
   color: #333;
 }
 
@@ -154,7 +154,7 @@ body {
 .section-container {
   margin-bottom: 40px;
   padding: 25px;
-  background-color: #f6f2ec; /* beige nude doux */
+  background-color: #f6f2ec; 
   border-radius: 10px;
   border: 1px solid #e8e2d9;
 }

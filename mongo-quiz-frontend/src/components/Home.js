@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import mongolingoLogo from '../assets/logo.jpeg';
 
 const Home = () => {
   const buttonBackgroundColor = '#6db193';
@@ -21,35 +22,36 @@ const Home = () => {
         padding: '50px',
         borderRadius: '20px',
         maxWidth: '900px',
-        width: '100%',
         boxShadow: '0 8px 30px rgba(0, 0, 0, 0.03)',
         textAlign: 'center',
       }}>
+        <img
+            src={mongolingoLogo}
+            alt="Mongolingo Logo"
+            style={{ width: '400px'}} 
+        />
         <h1 style={{
           fontSize: '2.75rem',
-          marginBottom: '25px',
+          marginBottom: '35px',
           color: '#3e3e3e',
         }}>
           Bienvenue sur <span style={{ color: '#6db193' }}>Mongolingo</span>
         </h1>
 
         <p style={{
-          fontSize: '1.15rem',
+          fontSize: '1.1rem',
           color: '#3e3e3e',
-          marginBottom: '18px',
           lineHeight: '1.8',
+          marginBottom: '35px',
         }}>
           Apprenez à manipuler <strong>MongoDB</strong> à travers des scénarios réels
           en explorant une base de données universitaire simulée.
-        </p>
-
-        <p style={{
-          fontSize: '1.1rem',
-          color: '#3e3e3e',
-          marginBottom: '35px',
-          lineHeight: '1.7',
-        }}>
-          Entraînez-vous sur des cas concrets : étudiants, professeurs, cours et notes — et maîtrisez les opérations <strong>CRUD</strong> et les requêtes complexes.
+            <br></br>
+            <strong>Maîtrisez la gestion de données en vous amusant !</strong>
+            <br></br> Entraînez-vous sur de vraies données : 
+            <strong> étudiants, professeurs, cours et notes</strong>.
+            <br></br>Développez vos compétences en maîtrisant les opérations <strong>CRUD</strong> et la création de requêtes complexes, le tout de manière interactive et ludique.
+            Prêt à devenir un pro de la base de données ?
         </p>
 
         <div style={{

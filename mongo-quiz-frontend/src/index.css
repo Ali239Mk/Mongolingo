@@ -1,13 +1,14 @@
+/* src/index.css */
 :root {
   --primary-green: #50a684;
   --dark-green: #3c8f6f;
   --text-dark: #2d2d2d;
   --text-light: #555;
-  --background-light: #6db193;
-  --background-section: #6db193;
+  --background-light: #fdfaf5;
+  --background-section: #f6f2ec;
   --border-light: #e4dfd7;
   --border-section: #e8e2d9;
-  --code-bg-light: #6db193;
+  --code-bg-light: #e5f3ee;
   --code-text-dark: #2d6655;
   --pre-bg: #f1f1f1;
 }
@@ -29,7 +30,6 @@ code {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-dark);
-  margin-top: 0em;
   margin-bottom: 0.8em;
   line-height: 1.2;
 }

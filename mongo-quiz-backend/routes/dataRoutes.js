@@ -97,13 +97,12 @@ router.post('/import/:collectionName', upload.single('file'), async (req, res) =
 
     // Tente d'insérer les documents. utilise `validateBeforeSave: false` et `ordered: false`
     // `ordered: false` signifie que si un document échoue (ex: `numId` dupliqué), les autres continueront d'être insérés.
-    const result = await Model.insertMany(dataToImport, { validateBeforeSave: false, ordered: false }); 
-    
+    const result = await Model.insertMany(dataToImport, { validateBeforeSave: true, ordered: false }); 
     console.log(`Importé ${result.insertedCount} documents dans la collection '${collectionName}'.`);
     res.status(200).json({ 
       message: `Données importées avec succès dans la collection '${collectionName}'.`,
       insertedCount: result.insertedCount,
-      errors: result.writeErrors || [] // Si ordered:false, il peut y avoir des erreurs spécifiques
+      errors: result.writeErrors || [] 
     });
 
   } catch (err) {
